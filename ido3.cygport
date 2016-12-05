@@ -1,0 +1,28 @@
+inherit gnome2
+
+NAME="ido3"
+VERSION=12.10.2
+RELEASE=1
+CATEGORY="Libs"
+SUMMARY="Indicator Display Objects library for GTK+3"
+DESCRIPTION="This library provides objects and widgets for use by indicators."
+HOMEPAGE="https://launchpad.net/ido"
+SRC_URI="${HOMEPAGE}/${VERSION%.*}/${VERSION}/+download/ido-${VERSION}.tar.gz"
+SRC_DIR="ido-${VERSION}"
+PATCH_URI="
+	12.10.2-no-undefined.patch
+"
+
+PKG_NAMES="libido3_0.1_0 libido3_0.1-devel"
+libido3_0_1_0_CONTENTS="
+	usr/bin/cygido3-0.1-0.dll
+	usr/share/doc/ido3/
+"
+libido3_0_1_devel_CONTENTS="
+	usr/include/libido3-0.1/
+	usr/lib/libido3-0.1.dll.a
+	usr/lib/pkgconfig/libido3-0.1.pc
+"
+
+# this hasn't been updated in far too long
+CFLAGS+=" -Wno-error=deprecated-declarations"
